@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile card UI Design</title>
+    <!-- /* Css */ -->
+    <link rel="stylesheet" href="style.css">
+
+       <!-- Boxicons Css -->
+       <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+  <div class="profile-card">
+    <div class="image">
+        <img src="frame_00_delay-0.067s.png" alt="" class="profile-img">
+    </div>
+
+    <div class="text-data">
+      <span class="name">Qamar Idrees</span>
+      <p class="job">I am a content creator, YouTuber, and cricket enthusiast. I create videos about cricket matches, player analysis, and content creation tips. I also share my experiences and insights on the world of cricket and content creation.</p>
+    </div>
+    <div class="media-buttons">
+      <a href="https://www.facebook.com/qamar.silat/" target="_blank" title="Facebook" style="background: #4367b2;" class="link">
+        <i class='bx bxl-facebook'></i>
+      </a>
+       <a href="https://www.instagram.com/qamar_idrees_40/" target="_blank" title="Instagram" style="background: #e1306c;" class="link">
+        <i class='bx bxl-instagram'></i>
+      </a>
+       <a href="https://www.youtube.com/@CJUnfold" target="_blank" title="YouTube" style="background: #f00;" class="link">
+        <i class='bx bxl-youtube'></i>
+      </a>
+       <a href="https://github.com/qamaridrees123" target="_blank" title="Github" style="background: #4367b2;" class="link">
+   <i class='bx bxl-github'></i>
+      </a>
+       <a href="#" title="LinkedIn" style="background: #4367b2;" class="link">
+        <i class='bx bxl-linkedin'></i>
+      </a>
+    </div>
+
+    <div class="buttons">
+      <button class="button">Subscribe</button>
+      <button class="button" id="messageBtn">Message</button>
+
+    </div>
+
+    <div class="message-section" id="messageSection" style="display:none; width:100%; margin-top:20px; background:#eef4ff; border:1px solid #c8daf8; border-radius:12px; padding:15px;">
+      <h3 style="margin:0 0 10px; font-size:16px;">Send a message</h3>
+      <textarea id="messageText" placeholder="Type your message..." style="width:100%; height:80px; border:1px solid #b3c9f8; border-radius:8px; padding:8px; resize:none;"></textarea>
+      <button id="sendMsg" class="button" style="margin-top:10px;">Send</button>
+      <p id="messageStatus" style="margin-top:10px; color:#2f65d8; font-size:14px;"></p>
+    </div>
+    <div class="analytics">
+      <div class="data">
+        <i class='bx bxs-heart'></i>
+        <span class="number">6 Likes</span>
+      </div>
+
+      <div class="data">
+        <i class='bx bx-message-dots'></i>
+        <span class="number">12 Messages</span>
+      </div>
+
+      <div class="data">
+        <i class='bx bx-share' ></i>
+        <span class="number">8 Shares</span>
+      </div>
+
+    </div>
+  </div>  
+    
+<script>
+  const image = document.querySelector('.image');
+  image.addEventListener('click', () => {
+    image.classList.add('animate');
+    setTimeout(() => {
+      image.classList.remove('animate');
+    }, 1000);
+  });
+
+  const socialLinks = document.querySelectorAll('.media-buttons .link');
+  socialLinks.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const name = link.getAttribute('title') || 'social';
+      if (link.href !== '#' && link.getAttribute('href') !== '#') {
+        alert(`Opening ${name}...`);
+      }
+    });
+  });
+
+  const messageBtn = document.getElementById('messageBtn');
+  const messageSection = document.getElementById('messageSection');
+  const sendMsg = document.getElementById('sendMsg');
+  const messageText = document.getElementById('messageText');
+  const messageStatus = document.getElementById('messageStatus');
+
+  messageBtn.addEventListener('click', () => {
+    messageSection.style.display = messageSection.style.display === 'none' ? 'block' : 'none';
+    messageStatus.textContent = '';
+  });
+
+  sendMsg.addEventListener('click', () => {
+    const msg = messageText.value.trim();
+    if (!msg) {
+      messageStatus.style.color = '#c40000';
+      messageStatus.textContent = 'Please type your message first.';
+      return;
+    }
+    messageStatus.style.color = '#2f65d8';
+    messageStatus.textContent = 'Message sent! Thank you.';
+    messageText.value = '';
+  });
+</script>
+</body>
+</html>
